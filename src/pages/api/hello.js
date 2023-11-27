@@ -1,12 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
-const baseURL = "https://fakestoreapi.com";
+const baseURL = 'https://fakestoreapi.com';
 
 const axiosInstance = axios.create({
   baseURL,
 });
 
 export const fetchProducts = async () => {
-  const response = await axiosInstance.get("/products");
-  return response.data;
-}
+  try {
+    const response = await axiosInstance.get('/products');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
+};
