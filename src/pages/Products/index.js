@@ -6,8 +6,12 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
-    const allProducts = await fetchProducts();
-    setProducts(allProducts);
+    try {
+      const allProducts = await fetchProducts();
+      setProducts(allProducts);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
   };
 
   useEffect(() => {

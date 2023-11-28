@@ -1,10 +1,11 @@
-import Navbar from '@/Components/Navbar';
-import ProductCards from '@/Components/Navbar/Cards';
+
+import Carousel from '@/Components/Navbar/Carousel';
 import React from 'react'
 
 const Home = () => {
   return (
     <div>
+      <Carousel/>
     </div>
   )
 }
