@@ -17,8 +17,8 @@ const Products = () => {
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-4 gap-4">
-        {products.map((item) => (
-          <ProductCards key={item.id} product={item} />
+        {products.map((product) => (
+          <ProductCards key={product.id} product={product} />
         ))}
       </div>
     </div>
