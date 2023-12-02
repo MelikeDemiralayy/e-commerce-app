@@ -24,3 +24,8 @@ export const fetchLimitedProducts = async () => {
     return [];
   }
 };
+// Detaya gitmek için api
+export const fetchDetail = async (id) => {
+  const response  = await axiosInstance.get (`/products/${id}`);
+  return response.data;
+}
