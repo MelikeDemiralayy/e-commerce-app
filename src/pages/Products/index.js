@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import ProductCards from '@/Components/Navbar/Cards';
-import { fetchProducts } from '../api/hello';
+import React, { useEffect, useState } from "react";
+import ProductCards from "@/Components/Navbar/Cards";
+import { fetchProducts } from "../api/hello";
 import Skeleton from "@/Components/Navbar/Cards/Skeleton";
 
 const Products = () => {
@@ -39,4 +39,3 @@ const Products = () => {
 };
 
 export default Products;
-
