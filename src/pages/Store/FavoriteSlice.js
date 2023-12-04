@@ -1,5 +1,3 @@
-// FavoriteSlice.js
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -11,13 +9,25 @@ export const FavoriteSlice = createSlice({
   initialState,
   reducers: {
     setFavorite: (state, action) => {
-      // Favori ekleme veya kaldırma işlemleri burada yapılır
-      // ...
+      if (typeof window !== "undefined") {
+        const currentFavorites =
+          JSON.parse(localStorage.getItem("Favorites")) || [];
+        let updatedFavorites;
+        if (currentFavorites.find((item) => item.id === action.payload.id)) {
+          updatedFavorites = currentFavorites.filter(
+            (item) => item.id !== action.payload.id
+          );
+        } else {
+          updatedFavorites = [...currentFavorites, action.payload];
+        }
+        localStorage.setItem("Favorites", JSON.stringify(updatedFavorites));
+        state.favorite = updatedFavorites;
+      }
     },
     loadFavoritesFromLocalStorage: (state) => {
       if (typeof window !== "undefined") {
         const storedFavorites =
-          JSON.parse(localStorage.getItem("favorites")) || [];
+          JSON.parse(localStorage.getItem("Favorites")) || [];
         state.favorite = storedFavorites;
       }
     },

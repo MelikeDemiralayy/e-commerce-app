@@ -1,17 +1,11 @@
-// store.js
 import { configureStore } from "@reduxjs/toolkit";
-import favoriteReducer, {
+import FavoriteReducer, {
   loadFavoritesFromLocalStorage,
-  setFavorite, // Burada setFavorite fonksiyonunu import edin
 } from "./FavoriteSlice";
-
-const Store = configureStore({
+export const store = configureStore({
   reducer: {
-    favorites: favoriteReducer,
+    favorites: FavoriteReducer,
   },
 });
 
-Store.dispatch(loadFavoritesFromLocalStorage());
-Store.dispatch(setFavorite()); // Örnek bir kullanım
-
-export default Store;
+store.dispatch(loadFavoritesFromLocalStorage());

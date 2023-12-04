@@ -23,20 +23,24 @@ const Carousel = () => {
   };
 
   return (
-    <div id="animation-carousel" className="relative w-full" data-carousel="static">
+    <div
+      id="animation-carousel"
+      className="relative w-full"
+      data-carousel="static"
+    >
       {/* Carousel wrapper */}
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         {products.map((product, index) => (
           <div
             key={product.id}
             className={`duration-200 ease-linear ${
-              index === activeIndex ? '' : 'hidden'
+              index === activeIndex ? "" : "hidden"
             }`}
-            data-carousel-item={index === activeIndex ? 'active' : ''}
+            data-carousel-item={index === activeIndex ? "active" : ""}
           >
             <img
               src={product.image}
-              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className=" object-cover absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt={`Carousel Item ${index + 1}`}
             />
           </div>

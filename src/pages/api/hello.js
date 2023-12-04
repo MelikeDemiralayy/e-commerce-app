@@ -25,7 +25,7 @@ export const fetchLimitedProducts = async () => {
   }
 };
 // Detaya gitmek için api
-export const fetchDetail = async (id) => {
-  const response  = await axiosInstance.get (`/products/${id}`);
+export const fetchDet = async (id) => {
+  const response = await axiosInstance.get(`products/${id}`);
   return response.data;
-}
+};
