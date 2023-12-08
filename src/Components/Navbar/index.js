@@ -1,17 +1,48 @@
 import Link from "next/link";
-import React from "react";
-
+import SearchBar from "./SearchBar";
+import { useState, useEffect } from "react";
+import { fetchProducts } from "@/pages/api/hello";
+import ProductCards from "./Cards";
 const Navbar = () => {
+  const [products, setProducts] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const productsData = await fetchProducts();
+      setProducts(productsData);
+    };
+
+    getProducts();
+  }, []);
+
+  const handleSearch = async (query) => {
+    try {
+      const allProducts = await fetchProducts();
+      const filteredProducts = allProducts.filter((product) =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      );
+
+      console.log("Aranan kelime:", query);
+      console.log("Arama sonuçları:", filteredProducts);
+
+      setSearchResults(filteredProducts); // Update search results state
+    } catch (error) {
+      console.error("Arama işlemi sırasında bir hata oluştu:", error);
+    }
+  };
+
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a
-            href="https://flowbite.com/"
+          {/* <a
+            //href="https://flowbite.com/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             {" "}
-          </a>
+          </a> */}
+
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button
               data-collapse-toggle="navbar-cta"
@@ -42,7 +73,7 @@ const Navbar = () => {
                   href="/Products"
                   className="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
-                  Product
+                  Products
                 </Link>
               </li>
               <li>
@@ -61,6 +92,16 @@ const Navbar = () => {
                   Sign up
                 </Link>
               </li>
+              <div>
+                <SearchBar onSearch={handleSearch} />
+                {searchResults.length > 0 && (
+                  <div className="mt-2">
+                    {searchResults.map((product) => (
+                      <ProductCards key={product.id} product={product} />
+                    ))}
+                  </div>
+                )}
+              </div>
             </ul>
           </div>
         </div>
@@ -68,4 +109,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;

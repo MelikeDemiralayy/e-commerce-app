@@ -29,3 +29,13 @@ export const fetchDet = async (id) => {
   const response = await axiosInstance.get(`products/${id}`);
   return response.data;
 };
+//Yeni ürün eklemek için 
+export const addNewProduct = async (productData) => {
+  try {
+    const response = await axiosInstance.post('/products', productData);
+    return response.data;
+  } catch (error) {
+    console.error('Error adding new product:', error);
+    throw error; // İsterseniz hatayı yukarıya fırlatabilirsiniz.
+  }
+};
