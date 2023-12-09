@@ -2,12 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   favorite: [],
+  test: false,
+  query: "",
 };
 
 export const FavoriteSlice = createSlice({
   name: "Favorites",
   initialState,
   reducers: {
+    setFilter: (state, action) => {
+      state.query = action.payload;
+    },
+    setTest: (state) => {
+      state.test = true;
+    },
     setFavorite: (state, action) => {
       if (typeof window !== "undefined") {
         const currentFavorites =
@@ -34,7 +42,12 @@ export const FavoriteSlice = createSlice({
   },
 });
 
-export const { setFavorite, loadFavoritesFromLocalStorage } =
-  FavoriteSlice.actions;
+export const {
+  setFavorite,
+  loadFavoritesFromLocalStorage,
+  setTest,
+  setFilter,
+} = FavoriteSlice.actions;
+
 
 export default FavoriteSlice.reducer;

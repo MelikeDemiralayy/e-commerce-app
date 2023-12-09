@@ -33,14 +33,14 @@ const Carousel = () => {
         {products.map((product, index) => (
           <div
             key={product.id}
-            className={`duration-200 ease-linear ${
+            className={`duration-200 max-w-lg ease-linear ${
               index === activeIndex ? "" : "hidden"
             }`}
             data-carousel-item={index === activeIndex ? "active" : ""}
           >
             <img
               src={product.image}
-              className=" object-cover absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className=" object-fill absolute block w-48 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt={`Carousel Item ${index + 1}`}
             />
           </div>
@@ -53,7 +53,7 @@ const Carousel = () => {
         onClick={handlePrev}
         data-carousel-prev
       >
-        {/* Previous button content */}
+        {/* Previous button content */} test
       </button>
       <button
         type="button"
