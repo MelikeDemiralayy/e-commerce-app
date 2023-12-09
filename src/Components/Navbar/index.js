@@ -1,6 +1,5 @@
 import Link from "next/link";
 import SearchBar from "./SearchBar";
-
 const Navbar = () => {
   return (
     <div>
@@ -65,6 +64,4 @@ const Navbar = () => {
     </div>
   );
 };
-  
-
 export default Navbar;

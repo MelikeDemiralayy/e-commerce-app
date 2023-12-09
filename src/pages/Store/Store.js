@@ -7,5 +7,4 @@ export const store = configureStore({
     favorites: FavoriteReducer,
   },
 });
-
 store.dispatch(loadFavoritesFromLocalStorage());

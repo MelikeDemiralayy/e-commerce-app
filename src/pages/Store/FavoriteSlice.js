@@ -5,7 +5,6 @@ const initialState = {
   test: false,
   query: "",
 };
-
 export const FavoriteSlice = createSlice({
   name: "Favorites",
   initialState,
@@ -41,7 +40,6 @@ export const FavoriteSlice = createSlice({
     },
   },
 });
-
 export const {
   setFavorite,
   loadFavoritesFromLocalStorage,

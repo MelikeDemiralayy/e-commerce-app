@@ -36,6 +36,6 @@ export const addNewProduct = async (productData) => {
     return response.data;
   } catch (error) {
     console.error('Error adding new product:', error);
-    throw error; // İsterseniz hatayı yukarıya fırlatabilirsiniz.
+    throw error;
   }
 };

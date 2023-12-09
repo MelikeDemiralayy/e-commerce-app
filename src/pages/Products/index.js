@@ -33,8 +33,7 @@ const Products = () => {
     };
 
     fetchData();
-  }, [query]); // Run the effect when query or products change
-
+  }, [query]); 
   console.log(data);
 
   return (

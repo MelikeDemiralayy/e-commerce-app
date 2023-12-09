@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { fetchLimitedProducts } from '@/pages/api/hello';
-
+import {
+  IoChevronBackCircleOutline,
+  IoChevronForwardCircleOutline,
+} from "react-icons/io5";
 const Carousel = () => {
   const [products, setProducts] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -15,11 +18,15 @@ const Carousel = () => {
   }, []);
 
   const handlePrev = () => {
-    setActiveIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : products.length - 1));
+    setActiveIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : products.length - 1
+    );
   };
 
   const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex < products.length - 1 ? prevIndex + 1 : 0));
+    setActiveIndex((prevIndex) =>
+      prevIndex < products.length - 1 ? prevIndex + 1 : 0
+    );
   };
 
   return (
@@ -28,7 +35,6 @@ const Carousel = () => {
       className="relative w-full"
       data-carousel="static"
     >
-      {/* Carousel wrapper */}
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         {products.map((product, index) => (
           <div
@@ -53,7 +59,7 @@ const Carousel = () => {
         onClick={handlePrev}
         data-carousel-prev
       >
-        {/* Previous button content */} test
+        <IoChevronBackCircleOutline />
       </button>
       <button
         type="button"
@@ -61,12 +67,11 @@ const Carousel = () => {
         onClick={handleNext}
         data-carousel-next
       >
-        {/* Next button content */}
+        <IoChevronForwardCircleOutline />
       </button>
     </div>
   );
 };
-
 export default Carousel;
 
 
