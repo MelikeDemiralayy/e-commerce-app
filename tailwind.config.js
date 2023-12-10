@@ -15,5 +15,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("tailwindcss"),
+    require("daisyui"),
+    require("flowbite/plugin"),
+  ],
 };

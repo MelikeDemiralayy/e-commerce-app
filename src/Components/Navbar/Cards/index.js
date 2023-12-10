@@ -31,7 +31,9 @@ const ProductCards = ({ product }) => {
             {product.price}
           </span>
           <div className="flex mt-4 md:mt-0">
-            <Link href={`/Detail/${product.id}`}>Learn More</Link>
+            <Link href={`/Detail/${product.id}`}>
+              <button className="btn btn-outline">Learn More</button>
+            </Link>
             <div>
               <span onClick={() => dispatch(setFavorite(product))}>
                 {favoriteState ? (

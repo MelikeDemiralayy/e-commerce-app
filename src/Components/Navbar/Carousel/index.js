@@ -59,7 +59,7 @@ const Carousel = () => {
         onClick={handlePrev}
         data-carousel-prev
       >
-        <IoChevronBackCircleOutline />
+        <IoChevronBackCircleOutline size={40} />
       </button>
       <button
         type="button"
@@ -67,7 +67,7 @@ const Carousel = () => {
         onClick={handleNext}
         data-carousel-next
       >
-        <IoChevronForwardCircleOutline />
+        <IoChevronForwardCircleOutline size={40} />
       </button>
     </div>
   );
