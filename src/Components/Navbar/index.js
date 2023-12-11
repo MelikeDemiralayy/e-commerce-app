@@ -57,11 +57,14 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        {/* <div className="navbar-center">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
-        </div> */}
         <div className="flex items-center space-x-4 font-barlow font-semibold text-lg text-white ml-auto">
           <Link href="/"> TrendGalaksy </Link>
+        </div>
+        <div>
+          <Link href="/auth/login">Login</Link>
+        </div>
+        <div>
+          <Link href="/auth/register">Sign up</Link>
         </div>
 
         <div className="flex items-center space-x-4 ml-auto">
