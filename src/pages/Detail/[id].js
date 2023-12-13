@@ -7,7 +7,7 @@ const DetailPage = () => {
   const [detail, setDetail] = useState(null);
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     if (id) {
@@ -24,7 +24,7 @@ const DetailPage = () => {
   }
 
   return (
-    <div>
+    <div className="mt-40">
       <DetailCard product={detail} />
     </div>
   );

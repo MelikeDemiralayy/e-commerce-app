@@ -4,15 +4,19 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/pages/Store/cartSlice";
 
+
 const DetailCard = ({ product }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
+
   const handleIncrease = () => {
     setCount((prevCount) => prevCount + 1);
   };
+
   const handleDecrease = () => {
     setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
   };
+
   const handleAddToCart = () => {
     dispatch(
       addToCart({
@@ -30,84 +34,73 @@ const DetailCard = ({ product }) => {
   }
 
   return (
-    <div>
-      <Link href={`/Detail/${product.id}`}>
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-          <figure>
-            <img src={product.image} alt="Product" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">{product.title}</h2>
-            <p>{product.description}</p>
-            <div className="card-actions justify-end">{product.price}</div>{" "}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-1">
-                <button
-                  className="bg-primary text-white px-2 py-1 rounded"
-                  onClick={handleDecrease}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="h-4 w-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M20 12H4"
-                    />
-                  </svg>
-                </button>
-                <span className="w-8 text-center">{count}</span>
-                <button
-                  className="bg-primary text-white px-2 py-1 rounded"
-                  onClick={handleIncrease}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="h-4 w-4"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </button>
-              </div>
+    <div className="h-screen ">
+      <div className="card lg:card-side bg-base-100 shadow-xl ">
+        <figure>
+          <img src={product.image} alt="Product" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{product.title}</h2>
+          <p>{product.description}</p>
+          <div className="card-actions justify-between">
+            <div>
               <button
-                className="bg-primary text-white px-4 py-2 rounded"
-                onClick={handleAddToCart}
+                className="bg-primary text-white px-2 py-1 rounded"
+                onClick={handleDecrease}
               >
-                Add to Cart <MdOutlineAddShoppingCart size={25} />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  className="h-4 w-4 inline-block ml-2"
+                  className="h-4 w-4"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
+              <span className="w-8 text-center">{count}</span>
+              <button
+                className="bg-primary text-white px-2 py-1 rounded"
+                onClick={handleIncrease}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-4 w-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                   />
                 </svg>
               </button>
             </div>
+            <div>
+              <button
+                className="bg-primary text-white px-4 py-2 rounded"
+                onClick={handleAddToCart}
+              >
+                Add to Cart <MdOutlineAddShoppingCart size={25} />
+              </button>
+              <Link href={`/Products/edit-product/${product.id}`}>
+                <div className="ml-2 text-blue-500">Edit Product</div>
+              </Link>
+            </div>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
 
 export default DetailCard;
+

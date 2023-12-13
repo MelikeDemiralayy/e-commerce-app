@@ -1,12 +1,16 @@
 import Carousel from "@/Components/Navbar/Carousel";
+import Hero from "@/Components/Navbar/Hero";
 import React from "react";
 
 const Home = () => {
   return (
     <div>
       <div>
-        <Carousel />
+        <Hero />
       </div>
+      {/* <div>
+        <Carousel />
+      </div> */}
     </div>
   );
 };

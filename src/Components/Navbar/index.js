@@ -3,9 +3,11 @@ import SearchBar from "./SearchBar";
 import { MdFavorite } from "react-icons/md";
 import { FaBasketShopping } from "react-icons/fa6";
 import Head from "next/head";
+import { FaUser } from "react-icons/fa6";
+
 const Navbar = () => {
   return (
-    <div>
+    <div className="">
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -18,9 +20,9 @@ const Navbar = () => {
           rel="stylesheet"
         />
       </Head>
-      <div className="navbar bg-orange-400">
-        <div className="navbar-start">
-          <div className="dropdown">
+      <div className="navbar  z-10 bg-green  flex flex-wrap items-center justify-between p-2">
+        <div className="flex items-center space-x-4 font-barlow font-semibold text-lg text-white">
+          <div className="dropdown inline-block">
             <div
               tabIndex={0}
               role="button"
@@ -43,7 +45,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-green rounded-box w-52"
             >
               <li>
                 <Link href="/">Home</Link>
@@ -54,18 +56,9 @@ const Navbar = () => {
               <li>
                 <Link href="/Products/add-products">Add Product</Link>
               </li>
-            </ul>{" "}
+            </ul>
           </div>
-          <div className="flex items-center space-x-4 font-barlow font-semibold text-lg text-white ">
-            <Link href="/"> TrendGalaksy </Link>
-          </div>
-        </div>
-
-        <div>
-          <Link href="/auth/login">Login</Link>
-        </div>
-        <div>
-          <Link href="/auth/register">Sign up</Link>
+          <Link href="/">TrendGalaksy</Link>
         </div>
 
         <div className="flex items-center space-x-4 ml-auto">
@@ -79,8 +72,12 @@ const Navbar = () => {
           </div>
           <div>
             <Link href="/cart">
-              {" "}
               <FaBasketShopping color="black" size={30} />
+            </Link>
+          </div>
+          <div>
+            <Link href="/auth/register">
+              <FaUser color="black" size={25} />
             </Link>
           </div>
         </div>
@@ -88,4 +85,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;

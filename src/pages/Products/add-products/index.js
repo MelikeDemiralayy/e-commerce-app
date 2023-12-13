@@ -1,137 +1,182 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useFormik } from "formik";
+import React, { useState, useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addNewProduct } from "@/pages/api/hello";
+import axios from "axios";
+import { fetchProducts } from "@/pages/api/hello";
+import ProductCards from "@/Components/Navbar/Cards";
 
-const ProductSchema = Yup.object().shape({
-  title: Yup.string().required("Product title is required"),
-  description: Yup.string()
-    .min(2, "Too short!")
-    .max(250, "Too Long!")
-    .required("Description is required"),
-  price: Yup.number()
-    .positive("Price must be a positive number")
-    .required("Price is required"),
-  imageUrl: Yup.string().url("Must be a valid URL").nullable(),
-});
-const AddProduct = () => {
-  const router = useRouter();
-  const [submitting, setSubmitting] = useState(false);
+const AddProductForm = () => {
+  const initialValues = {
+    title: "",
+    description: "",
+    price: 0,
+    category: "",
+    image: "",
+  };
 
-  const formik = useFormik({
-    initialValues: {
-      title: "",
-      description: "",
-      imageUrl: "",
-      price: "",
-    },
-    validationSchema: ProductSchema,
-    onSubmit: async (values) => {
-      try {
-        setSubmitting(true);
-        // API isteğini yapmadan önce gerekli düzenlemeleri yapın
-        // Örneğin, veriyi API formatına çevirin veya gerekli eklemeleri yapın
-        const apiProductData = {
-          title: values.title,
-          description: values.description,
-          image: values.imageUrl,
-          price: values.price,
-          // Diğer alanları ekleyebilirsiniz
-        };
-
-        // API isteği gönder
-        await addNewProduct(apiProductData);
-
-        alert("Product added successfully!");
-        router.push("/");
-      } catch (error) {
-        alert("Failed to add product");
-        console.error("An error occurred:", error);
-      } finally {
-        setSubmitting(false);
-      }
-    },
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required("Product name is required"),
+    description: Yup.string().required("Product description is required"),
+    price: Yup.number()
+      .typeError("Price must be a number")
+      .required("Price is required"),
+    category: Yup.string().required("Category is required"),
+    image: Yup.string()
+      .url("Please enter a valid URL")
+      .required("Image URL is required"),
   });
 
+  const [productList, setProductList] = useState([]);
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      // Add the new product
+      const response = await axios.post(
+        "http://localhost:3001/products",
+        values
+      );
+      console.log(response);
+      console.log("Product added successfully");
+
+      // Fetch the updated product list
+      const updatedProductList = await fetchProducts();
+      setProductList(updatedProductList);
+    } catch (error) {
+      console.error("An error occurred while adding the product:", error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    const fetchInitialProductList = async () => {
+      const initialProductList = await fetchProducts();
+      setProductList(initialProductList);
+    };
+
+    fetchInitialProductList();
+  }, []);
+  useEffect(() => {
+    const fetchInitialProductList = async () => {
+      const initialProductList = await fetchProducts();
+      setProductList(initialProductList);
+    };
+
+    fetchInitialProductList();
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br border-x-gray-500">
-      <div className="container mx-auto">
-        <div className="brand-box">
-          <h1 className="font-bold text-3xl text-white text-center">
-            Add Product
-          </h1>
-        </div>
-        <div className="magic-form max-w-md mx-auto my-4 bg-white rounded-lg shadow-md p-8">
-          <form
-            onSubmit={formik.handleSubmit}
-            className="grid grid-cols-1 gap-4"
-          >
-            <input
-              id="title"
-              name="title"
-              placeholder="Title"
-              value={formik.values.title}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:border-blue-500"
-            />
-            {formik.touched.title && formik.errors.title && (
-              <div className="text-red-500">{formik.errors.title}</div>
-            )}
-
-            <textarea
-              id="description"
-              name="description"
-              placeholder="Description"
-              value={formik.values.description}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className=" w-full max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            {formik.touched.description && formik.errors.description && (
-              <div className="text-red-500">{formik.errors.description}</div>
-            )}
-
-            <input
-              id="price"
-              name="price"
-              type="number"
-              placeholder="Price"
-              value={formik.values.price}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className=" w-full max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            {formik.touched.price && formik.errors.price && (
-              <div className="text-red-500">{formik.errors.price}</div>
-            )}
-
-            <input
-              id="imageUrl"
-              name="imageUrl"
-              placeholder="image URL"
-              value={formik.values.imageUrl}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              className=" w-full max-w-md bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            {formik.touched.imageUrl && formik.errors.imageUrl && (
-              <div className="text-red-500">{formik.errors.imageUrl}</div>
-            )}
-
+    <div>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form className="mt-6 max-w-md mx-auto flex flex-col h-screen justify-between">
+            <div className="my-4">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Name of the product:
+              </label>
+              <Field
+                className="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm"
+                type="text"
+                name="title"
+              />
+              <ErrorMessage
+                name="title"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+            <div className="my-4">
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Product Description:
+              </label>
+              <Field
+                className="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm"
+                type="text"
+                name="description"
+              />
+              <ErrorMessage
+                name="description"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+            <div className="my-4">
+              <label
+                htmlFor="price"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Price:
+              </label>
+              <Field
+                className="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm"
+                type="number"
+                name="price"
+              />
+              <ErrorMessage
+                name="price"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+            <div className="my-4">
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Category:
+              </label>
+              <Field
+                className="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm"
+                type="text"
+                name="category"
+              />
+              <ErrorMessage
+                name="category"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+            <div className="my-4">
+              <label
+                htmlFor="image"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Image URL:
+              </label>
+              <Field
+                className="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm"
+                type="text"
+                name="image"
+              />
+              <ErrorMessage
+                name="image"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
             <button
+              className="btn btn-info inline-block px-4 py-2 mt-4 "
               type="submit"
-              disabled={submitting}
-              className="bg-gradient-to-r from-gray-400 to-gray-600 hover:from-gray-500 hover:to-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              disabled={isSubmitting}
             >
               Add Product
             </button>
-          </form>
-        </div>
-      </div>
+            <div className="flex-grow"></div>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
 
-export default AddProduct;
+export default AddProductForm;

@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const saveToLocaleStorage = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
-
 export const fetchFromLocalStorage = () => {
   const cart = localStorage.getItem("cart");
   if (cart) {

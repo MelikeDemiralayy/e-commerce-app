@@ -10,7 +10,7 @@ const Products = () => {
   const query = useSelector((state) => state.favorites.query);
   const data = useSelector((state) => state.favorites.test);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+ 
   const getProducts = async () => {
     try {
       setLoading(true);
@@ -26,15 +26,18 @@ const Products = () => {
   useEffect(() => {
     const fetchData = async () => {
       await getProducts();
-      const filteredProducts = products.filter((product) =>
-        product.title.toLowerCase().includes(query.toLowerCase())
+      const filteredProducts = products.filter(
+        (product) =>
+          product.title &&
+          product.title.toLowerCase().includes(query.toLowerCase())
       );
+
       setFilteredProducts(filteredProducts);
     };
 
     fetchData();
   }, [query]); 
-  console.log(data);
+ 
 
   return (
     <div className="container mx-auto px-4">

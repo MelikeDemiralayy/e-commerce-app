@@ -1,6 +1,7 @@
 import { setFilter } from "@/pages/Store/FavoriteSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { IoSearch } from "react-icons/io5";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -17,11 +18,13 @@ const SearchBar = () => {
     <div>
       <input
         type="text"
-        placeholder="Ara..."
+        placeholder="Search Product..."
         value={query}
         onChange={handleInputChange}
       />
-      <button onClick={handleSearch}>Ara</button>
+      <button onClick={handleSearch}>
+        <IoSearch size={20} />
+      </button>
     </div>
   );
 };

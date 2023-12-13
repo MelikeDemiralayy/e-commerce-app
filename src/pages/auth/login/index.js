@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password"); // Doğru depolanan parolayı alın
     setInitialValues({ email: storedEmail, password: storedPassword });
   }, []);
 
@@ -22,22 +22,16 @@ const LoginForm = () => {
     localStorage.setItem("password", values.password);
     router.push("/");
   };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
+    <div className="flex justify-center items-center min-h-screen">
       <Formik
         initialValues={initialValues}
         validationSchema={loginValidationSchema}
         onSubmit={handleFormSubmit}
       >
         {({ values, setFieldValue, errors, handleSubmit }) => (
-          <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+          <form className="max-w-md w-full px-4" onSubmit={handleSubmit}>
             <div className="mb-5">
               <label
                 htmlFor="email"
@@ -48,7 +42,7 @@ const LoginForm = () => {
               <input
                 type="email"
                 id="email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="input-field"
                 placeholder="name@gmail.com"
                 value={values.email}
                 onChange={(e) => setFieldValue("email", e.target.value)}
@@ -65,7 +59,7 @@ const LoginForm = () => {
               <input
                 type="password"
                 id="password"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="input-field"
                 value={values.password}
                 onChange={(e) => setFieldValue("password", e.target.value)}
                 required
@@ -74,7 +68,7 @@ const LoginForm = () => {
 
             <button
               type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
               Submit
             </button>
