@@ -1,7 +1,7 @@
 import {
   loginInitialValues,
   loginValidationSchema,
-} from "@/pages/Validation/login";
+} from "@/Components/Navbar/Validation/login";
 import { Formik } from "formik";
 import ErrorMessage from "@/Components/Navbar/ErrorMessage";
 import { useEffect, useState } from "react";

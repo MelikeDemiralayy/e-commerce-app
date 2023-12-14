@@ -3,8 +3,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { setFavorite } from "@/pages/Store/FavoriteSlice";
-import { TfiMoney } from "react-icons/tfi";
+import { setFavorite } from "@/Components/Navbar/Store/FavoriteSlice";
 
 const ProductCards = ({ product }) => {
   const imageSrc = product.image || "placeholder_image_url";
@@ -17,12 +16,12 @@ const ProductCards = ({ product }) => {
   return (
     <div
       key={product.id}
-      className=" w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden"
+      className=" mt-5 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 overflow-hidden"
     >
       <div className="flex justify-center">
         {product.image && (
           <img
-            className=" lg:h-[10rem] object-cover"
+            className=" lg:h-[20rem] object-cover"
             src={imageSrc}
             alt={title}
           />
@@ -34,8 +33,7 @@ const ProductCards = ({ product }) => {
         </h5>
         <div className="flex items-center mb-3">
           <span className="text-xl font-bold text-gray-900 dark:text-white">
-            {product.price}
-            <TfiMoney />
+            {product.price} TL
           </span>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between">

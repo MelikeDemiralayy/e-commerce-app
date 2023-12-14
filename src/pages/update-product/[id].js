@@ -4,7 +4,7 @@ import axios from "axios";
 import {
   updateProductFormInitialValue,
   updateProductValidationSchema,
-} from "@/pages/Validation/updateProduct";
+} from "@/Components/Navbar/Validation/updateProduct";
 
 const UpdateProduct = () => {
   let product = {};

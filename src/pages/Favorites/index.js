@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { loadFavoritesFromLocalStorage } from "../Store/FavoriteSlice";
+import { loadFavoritesFromLocalStorage } from "../../Components/Navbar/Store/FavoriteSlice";
 import { useEffect, useState } from "react";
 import ProductCards from "@/Components/Navbar/Cards";
 

@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import {
   registerValidationSchema,
   registerInitialValues,
-} from "@/pages/Validation/register";
+} from "@/Components/Navbar/Validation/register";
 import { useRouter } from "next/router";
 import ErrorMessage from "@/Components/Navbar/ErrorMessage";
 import Link from "next/link";

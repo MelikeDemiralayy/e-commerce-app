@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart, getCartTotal, removeFromCart } from "../Store/cartSlice";
+import {
+  clearCart,
+  getCartTotal,
+  removeFromCart,
+} from "../../Components/Navbar/Store/cartSlice";
 import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 

@@ -1,4 +1,4 @@
-import { setFilter } from "@/pages/Store/FavoriteSlice";
+import { setFilter } from "@/Components/Navbar/Store/FavoriteSlice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IoSearch } from "react-icons/io5";
