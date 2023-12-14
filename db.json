@@ -241,11 +241,11 @@
       }
     },
     {
-      "name": "test12",
+      "title": "testtt",
       "description": "lorem ispum set",
-      "price": 1,
+      "price": 5,
       "category": "electronic",
-      "image": "https://i.pravatar.cc",
+      "imageUrl": "https://i.pravatar.cc",
       "id": 21
     },
     {
