@@ -3,8 +3,6 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/pages/Store/cartSlice";
-
-
 const DetailCard = ({ product }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -85,15 +83,16 @@ const DetailCard = ({ product }) => {
               </button>
             </div>
             <div>
+              {" "}
+              <Link href={`/update-product/${product.id}`}>Update Product</Link>
+            </div>
+            <div>
               <button
                 className="bg-primary text-white px-4 py-2 rounded"
                 onClick={handleAddToCart}
               >
                 Add to Cart <MdOutlineAddShoppingCart size={25} />
               </button>
-              <Link href={`/Products/edit-product/${product.id}`}>
-                <div className="ml-2 text-blue-500">Edit Product</div>
-              </Link>
             </div>
           </div>
         </div>
