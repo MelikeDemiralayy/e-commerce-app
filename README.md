@@ -1,40 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# E Commerce App
+Next.js ile oluşturulmuş bir e-ticaret uygulamasıdır.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+
+## Yükleme 
+Gerekli paketlerin yüklenmesi
+
+```bash 
+  npm install 
 ```
+Projeyi başlatılması
+```bash 
+  npm run dev
+```
+Uygulama, varsayılan olarak http://localhost:3000 adresinde çalışacaktır.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Json server'ın başlatılması
+```bash 
+  npm run json-server
+```
+JSON Server, http://localhost:3001 adresinde çalışacaktır ve sahte verilerle API isteklerini karşılayacaktır.
+##  Proje Yapısı
+### Sayfa Bileşenleri
+Proje, sayfa bileşenleri için `pages/` klasörü içerir. Her sayfa, uygulamanın belirli bir bölümünü temsil eder.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Componentler
+Genel kullanım için olan componentler `components/` klasörü içinde yer alır. Bu bileşenler, sayfalar arasında paylaşılabilir ve yeniden kullanılabilir olmalıdır. Örneğin, Navbar,Card, Footer gibi genel bileşenler burada yer alabilir.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Redux State Yönetimi
+Redux Toolkit kullanılarak global state yönetimi sağlanır. Sepet içeriği, kullanıcı bilgileri gibi veriler bu global stateler üzerinden yönetilir.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Formik ve Yup Kullanımı
+Formik ve Yup, form işlemleri ve validasyonları için kullanılır. Kullanıcı girişleri, güvenli bir şekilde yönetilir ve doğrulanır.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### API İstekleri
+Axios kullanılarak API istekleri gerçekleştirilir. API istekleri, api/ klasörü altında düzenlenir.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Kullanım Senaryoları
+### Ürünleri İnceleme
+Uygulamada yer alan ürünleri inceleyebilir ve detaylarına ulaşabilirsiniz.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sepet İşlemleri
+Ürünleri sepete ekleyebilir, sepet içeriğini görüntüleyebilir, sepetten ürün silebilir ve toplam tutarı görebilirsiniz.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Ürün Ekleme ve Düzenleme
+Yönetici olarak, yeni ürün ekleyebilir ve bu ürünü uygulamaya dahil edebilirsiniz.Var olan ürüne güncelleme yapabilirsiniz. 
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  
+## Kullanılan Teknolojiler
+- [Next.js](https://nextjs.org/) - React tabanlı web uygulamaları için bir framework.
+- [Redux Toolkit](https://redux-toolkit.js.org/) - State yönetimi için önerilen bir Redux kütüphanesi.
+- [Formik](https://formik.org/) - Form işlemleri için kullanılan bir React kütüphanesi.
+- [Yup](https://github.com/jquense/yup) - Şema tabanlı form validasyonu için kullanılan bir kütüphane.
+- [Axios](https://axios-http.com/) - HTTP istekleri yapmak için kullanılan bir kütüphane.
+- [JSON Server](https://github.com/typicode/json-server) - Sahte verilerle çalışmak için kullanılan bir JSON tabanlı REST API sunucusu.
+
+
+  ![ecommerce](https://github.com/MelikeDemiralayy/e-commerce-app/assets/147873534/d52a3bd3-203c-4ad6-90ac-8ae25447238c)
+
+![e-commerce](https://github.com/MelikeDemiralayy/e-commerce-app/assets/147873534/d5ae189b-55d7-470e-b750-0534cde88c8d)
+
+  
