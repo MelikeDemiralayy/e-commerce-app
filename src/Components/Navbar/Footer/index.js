@@ -3,7 +3,42 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-white dark:bg-gray-900">
+      <footer className="bg-gray-300 py-8">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Bölüm 1: Hakkımızda */}
+            <div className="col-span-1 md:col-span-2">
+              <h2 className="text-lg font-semibold mb-4">Hakkımızda</h2>
+              <p>Mağazamızda en yeni ürünleri bulabilirsiniz.</p>
+            </div>
+
+            {/* Bölüm 2: Sosyal Medya Bağlantıları */}
+            <div className="col-span-1">
+              <h2 className="text-lg font-semibold mb-4">Sosyal Medya</h2>
+              <div className="flex space-x-4">
+                <a href="#" className="text-blue-500 hover:text-blue-700">
+                  Facebook
+                </a>
+                <a href="#" className="text-blue-500 hover:text-blue-700">
+                  Twitter
+                </a>
+                <a href="#" className="text-blue-500 hover:text-blue-700">
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bölüm 3: İletişim Bilgileri */}
+          <div className="mt-8">
+            <h2 className="text-lg font-semibold mb-4">İletişim</h2>
+            <p>Adres: 1234 Örnek Cadde, Örnek Şehir</p>
+            <p>Email: info@example.com</p>
+            <p>Telefon: +90 (555) 555-5555</p>
+          </div>
+        </div>
+      </footer>
+      {/* <footer className="bg-white dark:bg-gray-900">
         <div className="mx-auto w-full max-w-screen-xl">
           <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
             <div>
@@ -175,7 +210,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

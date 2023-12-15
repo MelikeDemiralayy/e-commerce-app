@@ -79,7 +79,7 @@ const AddProductForm = () => {
                 htmlFor="title"
                 className="block text-sm font-medium text-gray-700"
               >
-                Name of the product:
+                Title:
               </label>
               <Field
                 className="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 block sm:text-sm"
