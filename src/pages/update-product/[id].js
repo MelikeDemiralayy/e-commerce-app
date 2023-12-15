@@ -5,6 +5,8 @@ import {
   updateProductFormInitialValue,
   updateProductValidationSchema,
 } from "@/Components/Navbar/Validation/updateProduct";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateProduct = () => {
   let product = {};
@@ -40,9 +42,11 @@ const UpdateProduct = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">Update Product</h2>
-      <form onSubmit={formik.handleSubmit}>
-        <div className="mb-4">
+      <form
+        className="mt-6 max-w-md mx-auto flex flex-col h-screen justify-between"
+        onSubmit={formik.handleSubmit}
+      >
+        <div className="my-1">
           <label className="block text-sm font-medium text-gray-700">
             Title:
           </label>
@@ -54,7 +58,7 @@ const UpdateProduct = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="mb-4">
+        <div className="my-1">
           <label className="block text-sm font-medium text-gray-700">
             Description:
           </label>
@@ -66,7 +70,7 @@ const UpdateProduct = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="mb-4">
+        <div className="my-1">
           <label className="block text-sm font-medium text-gray-700">
             Price:
           </label>
@@ -79,7 +83,7 @@ const UpdateProduct = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="mb-4">
+        <div className="my-1">
           <label className="block text-sm font-medium text-gray-700">
             Category:
           </label>
@@ -91,7 +95,7 @@ const UpdateProduct = () => {
             onChange={formik.handleChange}
           />
         </div>
-        <div className="mb-4">
+        <div className="my-1">
           <label className="block text-sm font-medium text-gray-700">
             Image URL:
           </label>
@@ -106,10 +110,11 @@ const UpdateProduct = () => {
         <div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-blue-500 rounded-md focus:outline-none hover:bg-blue-600"
+            className="w-full px-4 py-2 text-white bg-grey rounded-md focus:outline-none hover:bg-grey"
           >
             Update Product
           </button>
+          <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
       </form>
     </>

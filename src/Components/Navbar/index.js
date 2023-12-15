@@ -6,10 +6,10 @@ import Head from "next/head";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-300 p-4">
+    <nav className="bg-gray-300 p-4 ">
       <div className="container mx-auto flex justify-between items-center">
         <div>
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4   md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 ">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 ">
             <li>
               <Link href="/" className="text-lg font-semibold">
                 TrendGalaksy

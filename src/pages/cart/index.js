@@ -6,6 +6,8 @@ import {
 } from "../../Components/Navbar/Store/cartSlice";
 import { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const Cart = () => {
 
   const handleRemoveFromCart = (id, count) => {
     dispatch(removeFromCart({ id, count }));
+    toast.success("Ürün sepetten başarıyla kaldırıldı!");
   };
 
   const handleGetTotal = () => {
@@ -25,6 +28,7 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+    toast.success("Sepet başarıyla temizlendi!");
   };
 
   return (
@@ -81,11 +85,12 @@ const Cart = () => {
           </button>
         </div>{" "}
         <button
-          className="btn btn-contained btn-secondary"
+          className="btn btn-contained color: grey;"
           onClick={handleClearCart}
         >
           Sepeti Temizle
         </button>
+        <ToastContainer position="bottom-right" autoClose={3000} />
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/Components/Navbar/Store/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const DetailCard = ({ product }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -16,6 +18,7 @@ const DetailCard = ({ product }) => {
   };
 
   const handleAddToCart = () => {
+    toast.success("Ürün başarıyla sepete eklendi");
     dispatch(
       addToCart({
         id: product.id,
@@ -40,10 +43,14 @@ const DetailCard = ({ product }) => {
         <div className="card-body">
           <h2 className="card-title">{product.title}</h2>
           <p>{product.description}</p>
+          <div>
+            {" "}
+            <h3 className="price">{product.price} TL</h3>
+          </div>
           <div className="card-actions justify-between">
             <div>
               <button
-                className="bg-primary text-white px-2 py-1 rounded"
+                className="bg-grey text-white px-2 py-1 rounded"
                 onClick={handleDecrease}
               >
                 <svg
@@ -63,7 +70,7 @@ const DetailCard = ({ product }) => {
               </button>
               <span className="w-8 text-center">{count}</span>
               <button
-                className="bg-primary text-white px-2 py-1 rounded"
+                className="bg-grey text-white px-2 py-1 rounded"
                 onClick={handleIncrease}
               >
                 <svg
@@ -91,6 +98,7 @@ const DetailCard = ({ product }) => {
                 {" "}
                 <MdOutlineAddShoppingCart size={25} />
               </button>
+              <ToastContainer position="bottom-right" autoClose={3000} />
             </div>
           </div>
         </div>

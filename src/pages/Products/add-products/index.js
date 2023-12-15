@@ -3,7 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { fetchProducts } from "@/pages/api/hello";
-import ProductCards from "@/Components/Navbar/Cards";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddProductForm = () => {
   const initialValues = {
@@ -35,8 +36,10 @@ const AddProductForm = () => {
         "http://localhost:3001/products",
         values
       );
+      toast.success("Ürün başarıyla eklendi.");
       console.log(response);
       console.log("Product added successfully");
+      //router.push("/Products");
 
       // Fetch the updated product list
       const updatedProductList = await fetchProducts();
@@ -165,12 +168,13 @@ const AddProductForm = () => {
               />
             </div>
             <button
-              className="btn btn-info inline-block px-4 py-2 mt-4 "
+              className=" bg-grey inline-block px-4 py-2 mt-4 "
               type="submit"
               disabled={isSubmitting}
             >
               Add Product
             </button>
+            <ToastContainer position="bottom-right" autoClose={3000} />
             <div className="flex-grow"></div>
           </Form>
         )}
