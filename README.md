@@ -2,7 +2,8 @@
 # E Commerce App
 Next.js ile oluşturulmuş bir e-ticaret uygulamasıdır.
 
-
+ ![ecommerce](https://github.com/MelikeDemiralayy/e-commerce-app/assets/147873534/d52a3bd3-203c-4ad6-90ac-8ae25447238c)
+ ![e-commerce](https://github.com/MelikeDemiralayy/e-commerce-app/assets/147873534/d5ae189b-55d7-470e-b750-0534cde88c8d)
 
 
 ## Yükleme 
@@ -61,8 +62,8 @@ Yönetici olarak, yeni ürün ekleyebilir ve bu ürünü uygulamaya dahil edebil
 - [JSON Server](https://github.com/typicode/json-server) - Sahte verilerle çalışmak için kullanılan bir JSON tabanlı REST API sunucusu.
 
 
-  ![ecommerce](https://github.com/MelikeDemiralayy/e-commerce-app/assets/147873534/d52a3bd3-203c-4ad6-90ac-8ae25447238c)
+ 
 
-![e-commerce](https://github.com/MelikeDemiralayy/e-commerce-app/assets/147873534/d5ae189b-55d7-470e-b750-0534cde88c8d)
+
 
   
