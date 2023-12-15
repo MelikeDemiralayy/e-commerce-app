@@ -37,7 +37,7 @@ Redux Toolkit kullanılarak global state yönetimi sağlanır. Sepet içeriği, 
 Formik ve Yup, form işlemleri ve validasyonları için kullanılır. Kullanıcı girişleri, güvenli bir şekilde yönetilir ve doğrulanır.
 
 ### API İstekleri
-Axios kullanılarak API istekleri gerçekleştirilir. API istekleri, api/ klasörü altında düzenlenir.
+Axios kullanılarak API istekleri gerçekleştirilir. API istekleri, `api/` klasörü altında düzenlenir.
 
 
 
